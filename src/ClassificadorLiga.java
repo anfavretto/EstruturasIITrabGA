@@ -18,7 +18,9 @@ public class ClassificadorLiga {
 
 	public static void main(String[] args) 
 	{		
-		String caminhoArquivo = "C:\\Users\\Aline\\Documents\\Unisinos\\Estruturas Avançadas de Dados II\\TGA\\E0.csv";
+    String caminhoArquivo = "";
+    //caminhoArquivo = "C:\\Users\\Aline\\Documents\\Unisinos\\Estruturas Avançadas de Dados II\\TGA\\E0.csv";
+    caminhoArquivo = "misc/E0.csv";
         if(args.length > 0)
             caminhoArquivo = args[0];
         
@@ -38,6 +40,8 @@ public class ClassificadorLiga {
         }catch(IOException excep){
             System.out.println("Problema ao ler arquivo "+ caminhoArquivo +". "+ excep.getMessage());
         }
+        // Debug
+        System.out.println ("Leu o arquivo");
 	}
 
 }
