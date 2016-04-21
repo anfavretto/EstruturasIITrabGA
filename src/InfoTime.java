@@ -7,6 +7,8 @@
 // código publicado nos livros texto desta disciplina.
 // - Temos total ciência das consequências em caso de violarmos estes termos.
 
+package src;
+
 public class InfoTime 
 {
 	public String Nome;
