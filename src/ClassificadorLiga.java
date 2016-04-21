@@ -16,27 +16,23 @@ import java.io.IOException;
 
 public class ClassificadorLiga {
 
+	private static BufferedReader bufferArq;
+
 	public static void main(String[] args) 
 	{		
-    String caminhoArquivo = "";
-    //caminhoArquivo = "C:\\Users\\Aline\\Documents\\Unisinos\\Estruturas Avançadas de Dados II\\TGA\\E0.csv";
-    caminhoArquivo = "misc/E0.csv";
+    		String caminhoArquivo = "misc/E0.csv";
+
         if(args.length > 0)
             caminhoArquivo = args[0];
         
         try{
-         File arquivo = new File(caminhoArquivo);
-        
-        String linhaArquivo;
-        
-        FileReader arquivoFileReader = new FileReader(arquivo);
-        BufferedReader bufferArq = new BufferedReader(arquivoFileReader);
-         while ((linhaArquivo = bufferArq.readLine()) != null) 
-         {
-             String[] camposLinha = linhaArquivo.split(",");
-             String nomeTimeCasa = camposLinha[2];
-             String nomeTimeVisitante = camposLinha[3];
-         }
+        	File arquivo = new File(caminhoArquivo);
+        	String linhaArquivo;
+        	FileReader arquivoFileReader = new FileReader(arquivo);
+			bufferArq = new BufferedReader(arquivoFileReader);
+        	while ((linhaArquivo = bufferArq.readLine()) != null) {
+        		System.out.println(linhaArquivo);
+        	}
         }catch(IOException excep){
             System.out.println("Problema ao ler arquivo "+ caminhoArquivo +". "+ excep.getMessage());
         }
