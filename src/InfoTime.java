@@ -7,11 +7,12 @@
 // código privateado nos livros texto desta disciplina.
 // - Temos total ciência das consequências em caso de violarmos estes termos.
 
-public class InfoTime {
-	
-	private String nome;
-	private String leagueDivision;
-	private int totalPartidasJogadas;
+package src;
+
+public class InfoTime 
+{
+	public String Nome;
+	public int TotalPartidasJogadas;
 	
 	// Em Casa
 	private int totalVitoriasEmCasaFullTime;

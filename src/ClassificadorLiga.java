@@ -7,6 +7,8 @@
 // código publicado nos livros texto desta disciplina.
 // - Temos total ciência das consequências em caso de violarmos estes termos.
 
+package src;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -18,7 +20,8 @@ public class ClassificadorLiga {
 
 	public static void main(String[] args) 
 	{		
-		String caminhoArquivo = "C:\\Users\\Jonatan\\Documents\\E0.csv";
+    		String caminhoArquivo = "misc/E0.csv";
+
         if(args.length > 0)
             caminhoArquivo = args[0];
         
@@ -33,6 +36,8 @@ public class ClassificadorLiga {
         }catch(IOException excep){
             System.out.println("Problema ao ler arquivo "+ caminhoArquivo +". "+ excep.getMessage());
         }
+        // Debug
+        System.out.println ("Leu o arquivo");
 	}
 
 }
