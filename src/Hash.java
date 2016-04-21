@@ -15,7 +15,7 @@ public class Hash
 	
 	public void Insere(InfoTime time)
 	{
-		int posicao = HashFunction(time.Nome);
+		int posicao = HashFunction(time.getNome());
 		tabelaHash[posicao] = time;
 	}
 	
