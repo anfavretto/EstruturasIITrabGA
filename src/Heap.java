@@ -9,38 +9,16 @@
 
 package src;
 
-public class Heap
+public interface Heap
 {
-    private int qtElementos;
-    // Necessario alterar o tipo para objeto abstrato
-    private int[] arranjo;
+    public void buildHeap ();
 
-    // Construtor
-    public Heap ()
-    {
-        this.qtElementos = 0;
-    }
+    public void heapfy ();
 
-    private void buildHeap ()
-    {
-    }
+    public void insert ();
 
-    private void heapfy ()
-    {
-        // Necessario pensar em uma interface para este metodo
-    }
+    public int extract ();
 
-    private void insert ()
-    {
-    }
-
-    private void extract ()
-    {
-    }
-
-    private void increase ()
-    {
-        // Apenas para Fila prioritaria?
-    }
+    public void increase ();
 }
 
