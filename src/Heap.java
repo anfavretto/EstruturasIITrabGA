@@ -11,14 +11,13 @@ package src;
 
 public interface Heap
 {
+    public int parent (int index);
+    public int left (int index);
+    public int reight (int index);
     public void buildHeap ();
-
-    public void heapfy ();
-
+    public void heapfy (int indexRoot);
     public void insert ();
-
     public int extract ();
-
     public void increase ();
 }
 
