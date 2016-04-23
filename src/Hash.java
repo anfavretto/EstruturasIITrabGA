@@ -7,34 +7,37 @@
 // código publicado nos livros texto desta disciplina.
 // - Temos total ciência das consequências em caso de violarmos estes termos.
 
-package src;
 
 public class Hash 
 {
 	private InfoTime[] tabelaHash = new InfoTime[20];
 	
 	
-	public void Insere(InfoTime time)
+	public void add(InfoTime time)
 	{
-		int posicao = HashFunction(time.getNome());
+		int posicao = hashFunction(time.getNome());
 		tabelaHash[posicao] = time;
 	}
 	
-	public InfoTime Remove(String nomeTime)
+	public InfoTime remove(String nomeTime)
 	{
-		int posicao = HashFunction(nomeTime);
+		int posicao = hashFunction(nomeTime);
 		InfoTime timeExcluido = tabelaHash[posicao];
 		tabelaHash[posicao] = null;
 		return timeExcluido;
 	}
 	
-	public InfoTime Busca(String nomeTime)
+	public InfoTime busca(String nomeTime)
 	{
-		int posicao = HashFunction(nomeTime);
-		return tabelaHash[posicao];
+		int posicao = hashFunction(nomeTime);
+		if(tabelaHash[posicao] == null) {
+			return null;
+		} else {
+			return tabelaHash[posicao];
+		}
 	}
 	
-	private int HashFunction(String nomeTime)
+	private int hashFunction(String nomeTime)
 	{
 		return Times.BuscaChave(nomeTime);
 	}

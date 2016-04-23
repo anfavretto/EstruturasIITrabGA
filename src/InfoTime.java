@@ -7,12 +7,10 @@
 // código privateado nos livros texto desta disciplina.
 // - Temos total ciência das consequências em caso de violarmos estes termos.
 
-package src;
-
 public class InfoTime 
 {
-	public String Nome;
-	public int TotalPartidasJogadas;
+	public String nome;
+	public int totalPartidasJogadas;
 	
 	// Em Casa
 	private int totalVitoriasEmCasaFullTime;
@@ -38,210 +36,243 @@ public class InfoTime
 	private int totalGolsSofridosForaDeCasaFullTime;
 	private int totalGolsSofridosForaDeCasaHalfTime;
 	
-	private int totalDePontos;
+	private int totalDePontosHalfTime;
+	private int totalDePontosFullTime;
 	
-	public void derrota() {
-		totalDePontos = totalDePontos + 0;
-	}
-	
-	public void empate() {
-		totalDePontos = totalDePontos + 1;
-	}
-	
-	public void vitoria() {
-		totalDePontos = totalDePontos + 3;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public String getLeagueDivision() {
-		return leagueDivision;
+	
+	public String getNome() {
+		return nome;
 	}
-
-	public void setLeagueDivision(String leagueDivision) {
-		this.leagueDivision = leagueDivision;
+	
+	public void atualizaTotalDePartidasJogadas() {
+		totalPartidasJogadas++;
 	}
-
-	public int getTotalPartidasJogadas() {
+	
+	public int getTotalDePartidasJogadas() {
 		return totalPartidasJogadas;
 	}
-
-	public void setTotalPartidasJogadas(int totalPartidasJogadas) {
-		this.totalPartidasJogadas = totalPartidasJogadas;
+	
+	public void setGolsMarcadosNaPartidaEmCasaHalfTime(int quantidade) {
+		totalGolsFeitosEmCasaHalfTime = totalGolsFeitosEmCasaHalfTime + quantidade; 
 	}
-
-	public int getTotalVitoriasEmCasaFullTime() {
-		return totalVitoriasEmCasaFullTime;
-	}
-
-	public void setTotalVitoriasEmCasaFullTime(int totalVitoriasEmCasaFullTime) {
-		this.totalVitoriasEmCasaFullTime = totalVitoriasEmCasaFullTime;
-	}
-
-	public int getTotalVitoriasEmCasaHalfTime() {
-		return totalVitoriasEmCasaHalfTime;
-	}
-
-	public void setTotalVitoriasEmCasaHalfTime(int totalVitoriasEmCasaHalfTime) {
-		this.totalVitoriasEmCasaHalfTime = totalVitoriasEmCasaHalfTime;
-	}
-
-	public int getTotalDerrotasEmCasaFullTime() {
-		return totalDerrotasEmCasaFullTime;
-	}
-
-	public void setTotalDerrotasEmCasaFullTime(int totalDerrotasEmCasaFullTime) {
-		this.totalDerrotasEmCasaFullTime = totalDerrotasEmCasaFullTime;
-	}
-
-	public int getTotalDerrotasEmCasaHalfTime() {
-		return totalDerrotasEmCasaHalfTime;
-	}
-
-	public void setTotalDerrotasEmCasaHalfTime(int totalDerrotasEmCasaHalfTime) {
-		this.totalDerrotasEmCasaHalfTime = totalDerrotasEmCasaHalfTime;
-	}
-
-	public int getTotalEmpatesEmCasaFullTime() {
-		return totalEmpatesEmCasaFullTime;
-	}
-
-	public void setTotalEmpatesEmCasaFullTime(int totalEmpatesEmCasaFullTime) {
-		this.totalEmpatesEmCasaFullTime = totalEmpatesEmCasaFullTime;
-	}
-
-	public int getTotalEmpatesEmCasaHalfTime() {
-		return totalEmpatesEmCasaHalfTime;
-	}
-
-	public void setTotalEmpatesEmCasaHalfTime(int totalEmpatesEmCasaHalfTime) {
-		this.totalEmpatesEmCasaHalfTime = totalEmpatesEmCasaHalfTime;
-	}
-
-	public int getTotalGolsFeitosEmCasaFullTime() {
-		return totalGolsFeitosEmCasaFullTime;
-	}
-
-	public void setTotalGolsFeitosEmCasaFullTime(int totalGolsFeitosEmCasaFullTime) {
-		this.totalGolsFeitosEmCasaFullTime = totalGolsFeitosEmCasaFullTime;
-	}
-
-	public int getTotalGolsFeitosEmCasaHalfTime() {
+	
+	public int getTotalGolsMarcadosEmCasaHalfTime() {
 		return totalGolsFeitosEmCasaHalfTime;
 	}
-
-	public void setTotalGolsFeitosEmCasaHalfTime(int totalGolsFeitosEmCasaHalfTime) {
-		this.totalGolsFeitosEmCasaHalfTime = totalGolsFeitosEmCasaHalfTime;
+	
+	public void setGolsMarcadosNaPartidaEmCasaFullTime(int quantidade) {
+		totalGolsFeitosEmCasaFullTime = totalGolsFeitosEmCasaFullTime + quantidade;
 	}
-
-	public int getTotalGolsSofridosEmCasaFullTime() {
-		return totalGolsSofridosEmCasaFullTime;
+	
+	public int getTotalGolsMarcadosEmCasaFullTime() {
+		return totalGolsFeitosEmCasaFullTime;
 	}
-
-	public void setTotalGolsSofridosEmCasaFullTime(int totalGolsSofridosEmCasaFullTime) {
-		this.totalGolsSofridosEmCasaFullTime = totalGolsSofridosEmCasaFullTime;
+	
+	public void setGolsSofridosNaPartidaEmCasaHalfTime(int quantidade) {
+		totalGolsSofridosEmCasaHalfTime = totalGolsSofridosEmCasaHalfTime + quantidade;
 	}
-
+	
 	public int getTotalGolsSofridosEmCasaHalfTime() {
 		return totalGolsSofridosEmCasaHalfTime;
 	}
-
-	public void setTotalGolsSofridosEmCasaHalfTime(int totalGolsSofridosEmCasaHalfTime) {
-		this.totalGolsSofridosEmCasaHalfTime = totalGolsSofridosEmCasaHalfTime;
+	
+	public void setGolsSofridosNaPartidaEmCasaFullTime(int quantidade) {
+		totalGolsSofridosEmCasaFullTime = totalGolsSofridosEmCasaFullTime + quantidade;
 	}
-
-	public int getTotalVitoriasForaDeCasaFullTime() {
-		return totalVitoriasForaDeCasaFullTime;
+	
+	public int getTotalGolsSofridosEmCasaFullTime() {
+		return totalGolsSofridosEmCasaFullTime;
 	}
-
-	public void setTotalVitoriasForaDeCasaFullTime(int totalVitoriasForaDeCasaFullTime) {
-		this.totalVitoriasForaDeCasaFullTime = totalVitoriasForaDeCasaFullTime;
+	
+	public void setGolsMarcadosNaPartidaForaDeCasaHalfTime(int quantidade) {
+		totalGolsFeitosForaDeCasaHalfTime = totalGolsFeitosForaDeCasaHalfTime + quantidade; 
 	}
-
-	public int getTotalVitoriasForaDeCasaHalfTime() {
-		return totalVitoriasForaDeCasaHalfTime;
-	}
-
-	public void setTotalVitoriasForaDeCasaHalfTime(int totalVitoriasForaDeCasaHalfTime) {
-		this.totalVitoriasForaDeCasaHalfTime = totalVitoriasForaDeCasaHalfTime;
-	}
-
-	public int getTotalDerrotasForaDeCasaFullTime() {
-		return totalDerrotasForaDeCasaFullTime;
-	}
-
-	public void setTotalDerrotasForaDeCasaFullTime(int totalDerrotasForaDeCasaFullTime) {
-		this.totalDerrotasForaDeCasaFullTime = totalDerrotasForaDeCasaFullTime;
-	}
-
-	public int getTotalDerrotasForaDeCasaHalfTime() {
-		return totalDerrotasForaDeCasaHalfTime;
-	}
-
-	public void setTotalDerrotasForaDeCasaHalfTime(int totalDerrotasForaDeCasaHalfTime) {
-		this.totalDerrotasForaDeCasaHalfTime = totalDerrotasForaDeCasaHalfTime;
-	}
-
-	public int getTotalEmpatesForaDeCasaFullTime() {
-		return totalEmpatesForaDeCasaFullTime;
-	}
-
-	public void setTotalEmpatesForaDeCasaFullTime(int totalEmpatesForaDeCasaFullTime) {
-		this.totalEmpatesForaDeCasaFullTime = totalEmpatesForaDeCasaFullTime;
-	}
-
-	public int getTotalEmpatesForaDeCasaHalfTime() {
-		return totalEmpatesForaDeCasaHalfTime;
-	}
-
-	public void setTotalEmpatesForaDeCasaHalfTime(int totalEmpatesForaDeCasaHalfTime) {
-		this.totalEmpatesForaDeCasaHalfTime = totalEmpatesForaDeCasaHalfTime;
-	}
-
-	public int getTotalGolsFeitosForaDeCasaFullTime() {
-		return totalGolsFeitosForaDeCasaFullTime;
-	}
-
-	public void setTotalGolsFeitosForaDeCasaFullTime(int totalGolsFeitosForaDeCasaFullTime) {
-		this.totalGolsFeitosForaDeCasaFullTime = totalGolsFeitosForaDeCasaFullTime;
-	}
-
-	public int getTotalGolsFeitosForaDeCasaHalfTime() {
+	
+	public int getTotalGolsMarcadosForaDeCasaHalfTime() {
 		return totalGolsFeitosForaDeCasaHalfTime;
 	}
-
-	public void setTotalGolsFeitosForaDeCasaHalfTime(int totalGolsFeitosForaDeCasaHalfTime) {
-		this.totalGolsFeitosForaDeCasaHalfTime = totalGolsFeitosForaDeCasaHalfTime;
+	
+	public void setGolsMarcadosNaPartidaForaDeCasaFullTime(int quantidade) {
+		totalGolsFeitosForaDeCasaFullTime = totalGolsFeitosForaDeCasaFullTime + quantidade;
 	}
-
-	public int getTotalGolsSofridosForaDeCasaFullTime() {
-		return totalGolsSofridosForaDeCasaFullTime;
+	
+	public int getTotalGolsMarcadosForaDeCasaFullTime() {
+		return totalGolsFeitosForaDeCasaFullTime;
 	}
-
-	public void setTotalGolsSofridosForaDeCasaFullTime(int totalGolsSofridosForaDeCasaFullTime) {
-		this.totalGolsSofridosForaDeCasaFullTime = totalGolsSofridosForaDeCasaFullTime;
+	
+	public void setGolsSofridosNaPartidaForaDeCasaHalfTime(int quantidade) {
+		totalGolsSofridosForaDeCasaHalfTime = totalGolsSofridosForaDeCasaHalfTime + quantidade;
 	}
-
+	
 	public int getTotalGolsSofridosForaDeCasaHalfTime() {
 		return totalGolsSofridosForaDeCasaHalfTime;
 	}
-
-	public void setTotalGolsSofridosForaDeCasaHalfTime(int totalGolsSofridosForaDeCasaHalfTime) {
-		this.totalGolsSofridosForaDeCasaHalfTime = totalGolsSofridosForaDeCasaHalfTime;
-	}
-
-	public int getTotalDePontos() {
-		return totalDePontos;
-	}
-
-	public void setTotalDePontos(int totalDePontos) {
-		this.totalDePontos = totalDePontos;
+	
+	public void setGolsSofridosNaPartidaForaDeCasaFullTime(int quantidade) {
+		totalGolsSofridosForaDeCasaFullTime = totalGolsSofridosForaDeCasaFullTime + quantidade;
 	}
 	
+	public int getTotalGolsSofridosForaDeCasaFullTime() {
+		return totalGolsSofridosForaDeCasaFullTime;
+	}
+	
+	public void addVitoriaEmCasaHalfTime() {
+		totalVitoriasEmCasaHalfTime++;
+	}
+	
+	public int getTotalVitoriasEmCasaHalfTime() {
+		return totalVitoriasEmCasaHalfTime;
+	}
+	
+	public void addVitoriaEmCasaFullTime() {
+		totalVitoriasEmCasaFullTime++;
+	}
+	
+	public int getTotalVitoriasEmCasaFullTime() {
+		return totalVitoriasEmCasaFullTime;
+	}
+	
+	public void addVitoriaForaDeCasaHalfTime() {
+		totalVitoriasForaDeCasaHalfTime++;
+	}
+	
+	public int getTotalVitoriasForaDeCasaHalfTime() {
+		return totalVitoriasForaDeCasaHalfTime;
+	}
+	
+	public void addVitoriaForaDeCasaFullTime() {
+		totalVitoriasForaDeCasaFullTime++;
+	}
+	
+	public int getTotalVitoriasForaDeCasaFullTime() {
+		return totalVitoriasForaDeCasaFullTime;
+	}
+	
+	public void addEmpateEmCasaHalfTime() {
+		totalEmpatesEmCasaHalfTime++;
+	}
+	
+	public int getTotalEmpatesEmCasaHalfTime() {
+		return totalEmpatesEmCasaHalfTime;
+	}
+	
+	public void addEmpateEmCasaFullTime() {
+		totalEmpatesEmCasaFullTime++;
+	}
+	
+	public int getTotalEmpatesEmCasaFullTime() {
+		return totalEmpatesEmCasaFullTime;
+	}
+	
+	public void addEmpateForaDeCasaHalfTime() {
+		totalEmpatesForaDeCasaHalfTime++;
+	}
+	
+	public int getTotalEmpatesForaDeCasaHalfTime() {
+		return totalEmpatesForaDeCasaHalfTime;
+	}
+	
+	public void addEmpateForaDeCasaFullTime() {
+		totalEmpatesForaDeCasaFullTime++;
+	}
+	
+	public int getTotalEmpatesForaDeCasaFullTime() {
+		return totalEmpatesForaDeCasaFullTime;
+	}
+	
+	public void addDerrotaEmCasaHalfTime() {
+		totalDerrotasEmCasaHalfTime++;
+	}
+	
+	public int getTotalDerrotaEmCasaHalfTime() {
+		return totalDerrotasEmCasaHalfTime;
+	}
+	
+	public void addDerrotaEmCasaFullTime() {
+		totalDerrotasEmCasaFullTime++;
+	}
+	
+	public int getTotalDerrotaEmCasaFullTime() {
+		return totalDerrotasEmCasaFullTime;
+	}
+	
+	public void addDerrotaForaDeCasaHalfTime() {
+		totalDerrotasForaDeCasaHalfTime++;
+	}
+	
+	public int getTotalDerrotaForaDeCasaHalfTime() {
+		return totalDerrotasForaDeCasaHalfTime;
+	}
+	
+	public void addDerrotaForaDeCasaFullTime() {
+		totalDerrotasForaDeCasaFullTime++;
+	}
+	
+	public int getTotalDerrotaForaDeCasaFullTime() {
+		return totalDerrotasForaDeCasaFullTime;
+	}
+	
+	public void setPontosDerrotaFullTime() {
+		totalDePontosFullTime = totalDePontosFullTime + 0;
+	}
+	
+	public void setPontosEmpateFullTime() {
+		totalDePontosFullTime = totalDePontosFullTime + 1;
+	}
+	
+	public void setPontosVitoriaFullTime() {
+		totalDePontosFullTime = totalDePontosFullTime + 3;
+	}
+	
+	public void setPontosDerrotaHalfTime() {
+		totalDePontosHalfTime = totalDePontosHalfTime + 0;
+	}
+	
+	public void setPontosEmpateHalfTime() {
+		totalDePontosHalfTime = totalDePontosHalfTime + 1;
+	}
+	
+	public void setPontosVitoriaHalfTime() {
+		totalDePontosHalfTime = totalDePontosHalfTime + 3;
+	}
+	
+	public int getPontuacaoFullTime() {
+		return totalDePontosFullTime;
+	}
+	public int getPontuacaoHalfTime() {
+		return totalDePontosHalfTime;
+	}	
+	
+	public int getTotalGolsMarcadosFullTime() {
+		int golsPro = totalGolsFeitosEmCasaFullTime + totalGolsFeitosForaDeCasaFullTime;
+		return golsPro;
+	}
+	
+	public int getTotalGolsMarcadosHalfTime() {
+		int golsPro = totalGolsFeitosEmCasaHalfTime + totalGolsFeitosForaDeCasaHalfTime;
+		return golsPro;
+	}
+	
+	public int getTotalGolsSofridosFullTime() {
+		int golsContra = totalGolsSofridosEmCasaFullTime + totalGolsSofridosForaDeCasaFullTime;
+		return golsContra;
+	}
+	
+	public int getTotalGolsSofridosHalfTime() {
+		int golsContra = totalGolsSofridosEmCasaHalfTime + totalGolsSofridosForaDeCasaHalfTime;
+		return golsContra;
+	}
+	
+	public int getSaldoFullTime() {
+		int saldo = getTotalGolsMarcadosFullTime() - getTotalGolsSofridosFullTime();
+		return saldo;
+	}
+	
+	public int getSaldoHalfTime() {
+		int saldo = getTotalGolsMarcadosHalfTime() - getTotalGolsSofridosHalfTime();
+		return saldo;
+	}
 }
