@@ -1,13 +1,12 @@
-// NÃ³s (Aline, Jonatan, Gabriel), garantimos que:
+// Nós (Aline, Jonatan, Gabriel), garantimos que:
 //
-// - NÃ£o utilizamos cÃ³digo fonte obtidos de outros estudantes,
-// ou fonte nÃ£o autorizada, seja modificado ou cÃ³pia literal.
-// - Todo cÃ³digo usado em nosso trabalho Ã© resultado do nosso
+// - Não utilizamos código fonte obtidos de outros estudantes,
+// ou fonte não autorizada, seja modificado ou cópia literal.
+// - Todo código usado em nosso trabalho é resultado do nosso
 // trabalho original, ou foi derivado de um
-// cÃ³digo publicado nos livros texto desta disciplina.
-// - Temos total ciÃªncia das consequÃªncias em caso de violarmos estes termos.
+// código publicado nos livros texto desta disciplina.
+// - Temos total ciência das consequências em caso de violarmos estes termos.
 
-package src;
 
 public class Heap
 {
