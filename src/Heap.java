@@ -13,11 +13,12 @@ public interface Heap
 {
     public int parent (int index);
     public int left (int index);
-    public int reight (int index);
-    public void buildHeap ();
+    public int right (int index);
+    public void buildHeap (int[] arranjo);
     public void heapfy (int indexRoot);
     public void insert ();
     public int extract ();
     public void increase ();
+    public void printHeap ();
 }
 
