@@ -40,7 +40,9 @@ public enum Times
 		this.Nome = nome; 
 	}
 
-    int indice() { return indice; }
+    int getIndice() { return indice; }
+    String getNome() { return Nome; }
+    
     
 	public static int BuscaChave(String nome)
 	{

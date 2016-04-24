@@ -1,9 +1,7 @@
-package src;
-
 public class MaxHeap implements Heap
 {
     private int _qtElementos;
-    private int[] _arranjo;
+    private ObjetoOrdenado[] _arranjo;
     private int _xfactor;
 
     public MaxHeap ()
@@ -14,7 +12,7 @@ public class MaxHeap implements Heap
 
     public int parent (int index)
     {
-        return _arranjo [((index + this._xfactor)/2) - this._xfactor];
+        return ((index + this._xfactor)/2) - this._xfactor;
     }
 
     public int left (int index)
@@ -27,49 +25,49 @@ public class MaxHeap implements Heap
         return (2 * (index + this._xfactor) + 1) - this._xfactor;
     }
 
-    public void buildHeap (int[] arranjo)
+    public ObjetoOrdenado[] buildHeap (ObjetoOrdenado[] arranjo)
     {
-        this._arranjo = new int [arranjo.length];
-        System.arraycopy (arranjo, // Source
-                          0, // Start pos array source
-                          this._arranjo, // Destination
-                          0, // Star pos array destination
-                          arranjo.length); // length
+        this._arranjo = new ObjetoOrdenado[arranjo.length];
+        System.arraycopy (arranjo, 
+                          0,
+                          this._arranjo, 
+                          0, 
+                          arranjo.length); 
 
         this._qtElementos = this._arranjo.length;
         int limite = ((this._arranjo.length - this._xfactor) / 2);
         for (int i = limite;i >= 0; i--)
         {
-            this.heapfy (i);
-            this.printHeap ();
+            this.heapfy(i);
         }
+        
+        return this._arranjo;
     }
 
     public void heapfy (int indexRoot)
     {
-        int left = this.left (indexRoot);
-        int right = this.right (indexRoot);
+        int left = this.left(indexRoot);
+        int right = this.right(indexRoot);
         int maior = indexRoot;
 
         if (left < this._qtElementos &&
-        this._arranjo [left] > this._arranjo [indexRoot])
+        this._arranjo[left].getPropriedadeOrdenada() > this._arranjo[indexRoot].getPropriedadeOrdenada())
         {
             maior = left;
         }
         if (right < this._qtElementos &&
-        this._arranjo [right] > this._arranjo [maior])
+        this._arranjo[right].getPropriedadeOrdenada() > this._arranjo[maior].getPropriedadeOrdenada())
         {
             maior = right;
         }
 
         if (indexRoot != maior)
         {
-            // Swap de pai com filho
-            int t = this._arranjo [indexRoot];
+            ObjetoOrdenado t = this._arranjo[indexRoot];
             this._arranjo [indexRoot] = this._arranjo [maior];
             this._arranjo [maior] = t;
 
-            this.heapfy (maior);
+            this.heapfy(maior);
         }
     }
 

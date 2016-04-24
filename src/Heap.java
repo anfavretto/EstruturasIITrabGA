@@ -13,7 +13,7 @@ public interface Heap
     public int parent (int index);
     public int left (int index);
     public int right (int index);
-    public void buildHeap (int[] arranjo);
+    public ObjetoOrdenado[] buildHeap (ObjetoOrdenado[] arranjo);
     public void heapfy (int indexRoot);
     public void insert ();
     public int extract ();

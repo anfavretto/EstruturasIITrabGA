@@ -44,22 +44,29 @@ public class ClassificadorLiga {
 			System.out.println("Problema ao ler arquivo "+ caminhoArquivo +". "+ excep.getMessage());
 		}
 		
-		System.out.println("Digite o que você deseja executar: \n 1- Pesquisar um time \n 0- Sair");
+		System.out.println("Digite o que você deseja executar: \n 1- Pesquisar um time \n 2- Exibir classificação  \n 0- Sair");
 		BufferedReader leitura = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			int valorSelecionado = Integer.parseInt(leitura.readLine());
 			while(valorSelecionado > 0){
 			
-				if(valorSelecionado == 1){
+				switch(valorSelecionado){
+				case(1):
 					System.out.println("Informe o time que deseja pesquisar: ");
 					String time = leitura.readLine();
 					InfoTime timeBuscado = tabelaHash.busca(time);
 					if(timeBuscado != null){
+						System.out.println("                       - Home -		           - Away -		      - Total -");
+						System.out.println("                  Pld   W  D  L   F:A           W  D  L   F:A              F:A     +/-   Pts");
 						Estatisticas.exibeTime(timeBuscado);
-					}
-					
+					}	
+					break;
+				case(2):
+					Estatisticas.exibeESalvaClassificacaoFullTime(tabelaHash);
+					break;
 				}
-				System.out.println("Digite o que você deseja executar: \n 1- Pesquisar um time \n 0- Sair");
+				
+				System.out.println("Digite o que você deseja executar: \n 1- Pesquisar um time \n 2- Exibir classificação  \n 0- Sair");
 				valorSelecionado = Integer.parseInt(leitura.readLine());
 			}	
 		} catch (IOException e) {
