@@ -8,38 +8,16 @@
 // - Temos total ciência das consequências em caso de violarmos estes termos.
 
 
-public class Heap
+public interface Heap
 {
-    private int qtElementos;
-    // Necessario alterar o tipo para objeto abstrato
-    private int[] arranjo;
-
-    // Construtor
-    public Heap ()
-    {
-        this.qtElementos = 0;
-    }
-
-    private void buildHeap ()
-    {
-    }
-
-    private void heapfy ()
-    {
-        // Necessario pensar em uma interface para este metodo
-    }
-
-    private void insert ()
-    {
-    }
-
-    private void extract ()
-    {
-    }
-
-    private void increase ()
-    {
-        // Apenas para Fila prioritaria?
-    }
+    public int parent (int index);
+    public int left (int index);
+    public int right (int index);
+    public void buildHeap (int[] arranjo);
+    public void heapfy (int indexRoot);
+    public void insert ();
+    public int extract ();
+    public void increase ();
+    public void printHeap ();
 }
 
