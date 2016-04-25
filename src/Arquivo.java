@@ -7,7 +7,7 @@ public class Arquivo {
 	public static void SalvarArquivo(String nomeArquivo, String conteudoArquivo){
 		FileWriter arq;
 		try {
-			arq = new FileWriter(nomeArquivo);
+			arq = new FileWriter("misc/" + nomeArquivo);
 			PrintWriter gravarArq = new PrintWriter(arq); 
 			gravarArq.printf(conteudoArquivo); 
 			arq.close();

@@ -10,7 +10,19 @@ public class MinHeap implements Heap
         this._xfactor = 1;
     }
 
-    public int parent (int index)
+    public ObjetoOrdenado[] getHeap(){
+    	return this._arranjo;
+    }
+    
+    public int get_qtElementos() {
+		return _qtElementos;
+	}
+
+	public void set_qtElementos(int _qtElementos) {
+		this._qtElementos = _qtElementos;
+	}
+
+	public int parent (int index)
     {
         return ((index + this._xfactor)/2) - this._xfactor;
     }
@@ -25,7 +37,7 @@ public class MinHeap implements Heap
         return (2 * (index + this._xfactor) + 1) - this._xfactor;
     }
 
-    public ObjetoOrdenado[] buildHeap (ObjetoOrdenado[] arranjo)
+    public void buildHeap (ObjetoOrdenado[] arranjo)
     {
         this._arranjo = new ObjetoOrdenado[arranjo.length];
         System.arraycopy (arranjo, 
@@ -40,7 +52,6 @@ public class MinHeap implements Heap
         {
             this.heapfy(i);
         }
-        return this._arranjo;
     }
 
     public void heapfy (int indexRoot)

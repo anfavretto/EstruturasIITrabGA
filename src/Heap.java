@@ -13,11 +13,14 @@ public interface Heap
     public int parent (int index);
     public int left (int index);
     public int right (int index);
-    public ObjetoOrdenado[] buildHeap (ObjetoOrdenado[] arranjo);
+    public void buildHeap (ObjetoOrdenado[] arranjo);
     public void heapfy (int indexRoot);
     public void insert ();
     public int extract ();
     public void increase ();
     public void printHeap ();
+    public int get_qtElementos();
+    public void set_qtElementos(int _qtElementos);
+    public ObjetoOrdenado[] getHeap();
 }
 

@@ -22,11 +22,11 @@ public class TesteHeap
         System.out.println ("========================================");
         System.out.println ("*** MIN-HEAP ***");
         Heap hp = new MinHeap ();
-        printHeap((ObjetoOrdenado[])hp.buildHeap(v));
+        //printHeap((ObjetoOrdenado[])hp.buildHeap(v));
         System.out.println ("========================================");
         System.out.println ("*** MAX-HEAP ***");
         Heap hp1 = new MaxHeap ();
-        printHeap((ObjetoOrdenado[])hp1.buildHeap(v));
+        //printHeap((ObjetoOrdenado[])hp1.buildHeap(v));
     }
 
     public static void printEntrada (int[] v)
