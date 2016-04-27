@@ -1,11 +1,28 @@
 
 public class Estatisticas {
+	private InfoTime time;
 	
-	public static void exibeTime(InfoTime time){
-		System.out.println(ObtemLinhaExibicaoTimeFullTime(time, true));
+	public Estatisticas(InfoTime time){
+		this.time = time;
 	}
 	
-	private static String ObtemNomePadronizado(String nomeTime, boolean fgAdicionaEspacosInicio){
+	public Estatisticas(){
+		this.time = null;
+	}
+	
+	public InfoTime getTime() {
+		return time;
+	}
+
+	public void setTime(InfoTime time) {
+		this.time = time;
+	}
+
+	public void exibeTime(){
+		System.out.println(ObtemLinhaExibicaoTimeFullTime(true));
+	}
+	
+	private String ObtemNomePadronizado(String nomeTime, boolean fgAdicionaEspacosInicio){
 		String separador = " ";
 		while(nomeTime.length() < 14){
 			if(fgAdicionaEspacosInicio){
@@ -17,7 +34,7 @@ public class Estatisticas {
 		return nomeTime;
 	}
 
-	private static String ObtemLinhaExibicaoTimeFullTime(InfoTime time, boolean fgAdicionaEspacosInicioNome){
+	private String ObtemLinhaExibicaoTimeFullTime(boolean fgAdicionaEspacosInicioNome){
 		String separadorVitoriasEmCasa = time.getTotalVitoriasEmCasaFullTime() > 9 ? "   " : "    ";
 		String separadorPosVitoriasEmCasa = time.getTotalVitoriasEmCasaFullTime() > 9 ? "  " : "  ";
 		String separadorDerrotasEmCasa = time.getTotalDerrotaEmCasaFullTime() > 9 ? " " : "  ";
@@ -49,7 +66,7 @@ public class Estatisticas {
 		return retorno;
 	}
 	
-	private static String ObtemLinhaExibicaoTimeHalfTime(InfoTime time, boolean fgAdicionaEspacosInicioNome){
+	private String ObtemLinhaExibicaoTimeHalfTime(boolean fgAdicionaEspacosInicioNome){
 		String separadorVitoriasEmCasa = time.getTotalVitoriasEmCasaHalfTime() > 9 ? "   " : "    ";
 		String separadorPosVitoriasEmCasa = time.getTotalVitoriasEmCasaHalfTime() > 9 ? "  " : "  ";
 		String separadorDerrotasEmCasa = time.getTotalDerrotaEmCasaHalfTime() > 9 ? " " : "  ";
@@ -81,7 +98,7 @@ public class Estatisticas {
 		return retorno;
 	}
 	
-	public static void exibeESalvaClassificacaoFullTime(Hash tabelaTimes){
+	public void exibeESalvaClassificacaoFullTime(Hash tabelaTimes){
 		ObjetoOrdenado[] listaTotalDePontosFullTime = new ObjetoOrdenado[20];
 		ObjetoOrdenado[] listaTotalDePontosHalfTime = new ObjetoOrdenado[20];
 		Times[] timesLiga = Times.values();
@@ -101,10 +118,16 @@ public class Estatisticas {
 			listaTotalDePontosHalfTime[timeAtual.getIndice()] = novoHalfTime;
 		}
 		
-		ObjetoOrdenado[] maxHeapFullTime = HeapSort.HeapSort(listaTotalDePontosFullTime);
+		HeapSort heapFullTime = new HeapSort();
+		heapFullTime.HeapSortOrdenacao(listaTotalDePontosFullTime);
+		ObjetoOrdenado[] maxHeapFullTime = heapFullTime.getMaxHeap();
 		AjusteClassificacaoFullTime(maxHeapFullTime);
-		ObjetoOrdenado[] maxHeapHalfTime = HeapSort.HeapSort(listaTotalDePontosHalfTime);
+		
+		HeapSort heapHalfTime = new HeapSort();
+		heapHalfTime.HeapSortOrdenacao(listaTotalDePontosHalfTime);
+		ObjetoOrdenado[] maxHeapHalfTime = heapHalfTime.getMaxHeap();
 		AjusteClassificacaoHalfTime(maxHeapHalfTime);
+		
 		String conteudoMaxHeapFullTime = "";
 		String conteudoMaxHeapHalfTime = "";
 		
@@ -116,20 +139,21 @@ public class Estatisticas {
 		int indice = 1;
 		for(int i = maxHeapFullTime.length - 1; i >= 0 ; i--){
 			separadorInicial = indice > 9 ? "" : " ";
-			InfoTime time = maxHeapFullTime[i].getTime();
+			
+			setTime(maxHeapFullTime[i].getTime());
 			
 			String inicioLinha = separadorInicial + indice + ". ";
-			conteudoMaxHeapFullTime += inicioLinha + ObtemLinhaExibicaoTimeFullTime(time, false) + "\n";
+			conteudoMaxHeapFullTime += inicioLinha + ObtemLinhaExibicaoTimeFullTime(false) + "\n";
 			
 			indice++;
 		}
 		indice = 1;
 		for(int i = maxHeapHalfTime.length - 1; i >= 0 ; i--){
 			separadorInicial = indice > 9 ? "" : " ";
-			InfoTime time = maxHeapHalfTime[i].getTime();
+			setTime(maxHeapHalfTime[i].getTime());
 			
 			String inicioLinha = separadorInicial + indice + ". ";
-			conteudoMaxHeapHalfTime += inicioLinha + ObtemLinhaExibicaoTimeHalfTime(time, false) + "\n";
+			conteudoMaxHeapHalfTime += inicioLinha + ObtemLinhaExibicaoTimeHalfTime(false) + "\n";
 			indice++;
 		}
 		System.out.println(cabecalho + conteudoMaxHeapFullTime);
@@ -137,7 +161,7 @@ public class Estatisticas {
 		Arquivo.SalvarArquivo("fixture_ht.txt", cabecalho + conteudoMaxHeapHalfTime);
 	}
 	
-	private static void AjusteClassificacaoFullTime(ObjetoOrdenado[] classificacao){
+	private void AjusteClassificacaoFullTime(ObjetoOrdenado[] classificacao){
 		int indice = classificacao.length - 1;
 		while(indice > 0){
 			if(classificacao[indice].getPropriedadeOrdenada() == classificacao[indice - 1].getPropriedadeOrdenada()){
@@ -152,7 +176,7 @@ public class Estatisticas {
 			indice--;
 		}
 	}
-	private static void AjusteClassificacaoHalfTime(ObjetoOrdenado[] classificacao){
+	private void AjusteClassificacaoHalfTime(ObjetoOrdenado[] classificacao){
 		int indice = classificacao.length - 1;
 		while(indice > 0){
 			if(classificacao[indice].getPropriedadeOrdenada() == classificacao[indice - 1].getPropriedadeOrdenada()){

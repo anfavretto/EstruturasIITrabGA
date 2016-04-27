@@ -44,6 +44,8 @@ public class ClassificadorLiga {
 			System.out.println("Problema ao ler arquivo "+ caminhoArquivo +". "+ excep.getMessage());
 		}
 		
+		Estatisticas estatisticas = new Estatisticas();
+		
 		System.out.println("Digite o que você deseja executar: \n 1- Pesquisar um time \n 2- Exibir classificação  \n 0- Sair");
 		BufferedReader leitura = new BufferedReader(new InputStreamReader(System.in));
 		try {
@@ -58,11 +60,12 @@ public class ClassificadorLiga {
 					if(timeBuscado != null){
 						System.out.println("                       - Home -		           - Away -		      - Total -");
 						System.out.println("                  Pld   W  D  L   F:A           W  D  L   F:A              F:A     +/-   Pts");
-						Estatisticas.exibeTime(timeBuscado);
+						estatisticas.setTime(timeBuscado);
+						estatisticas.exibeTime();
 					}	
 					break;
 				case(2):
-					Estatisticas.exibeESalvaClassificacaoFullTime(tabelaHash);
+					estatisticas.exibeESalvaClassificacaoFullTime(tabelaHash);
 					break;
 				}
 				
