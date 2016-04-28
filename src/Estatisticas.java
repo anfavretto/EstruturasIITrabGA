@@ -254,6 +254,7 @@ public class Estatisticas {
 	public ObjetoOrdenado[] classificacaoChutesGol(Hash hash) {
 		ObjetoOrdenado[] array = new ObjetoOrdenado[20];
 		Times[] times = Times.values();
+		
 		for(Times timeAtual : times){
 			InfoTime time = hash.busca(timeAtual.getNome());			
 			ObjetoOrdenado novo = new ObjetoOrdenado();
@@ -261,6 +262,7 @@ public class Estatisticas {
 			novo.setTime(time);
 			array[timeAtual.getIndice()] = novo;
 		}
+		
 		HeapSort heapChutesGol = new HeapSort(new MinHeap());
 		heapChutesGol.HeapSortOrdenacao(array);
 		ObjetoOrdenado[] classificacao = heapChutesGol.getHeap();
