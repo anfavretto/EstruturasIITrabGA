@@ -120,6 +120,7 @@ public class ClassificadorLiga {
 			homeTeam.addDerrotaEmCasaHalfTime();
 		}
 		homeTeam.atualizaTotalDePartidasJogadas();
+		homeTeam.setTotalChutesGol(Integer.parseInt(dados[13]));
 	}
 	
 	public static void AdicionaAtualizaAwayTeam(String[] dados, Hash tabelaHash){
@@ -160,5 +161,6 @@ public class ClassificadorLiga {
 			awayTeam.addDerrotaForaDeCasaHalfTime();
 		}
 		awayTeam.atualizaTotalDePartidasJogadas();
+		awayTeam.setTotalChutesGol(Integer.parseInt(dados[14]));
 	}
 }
