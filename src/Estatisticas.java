@@ -1,3 +1,15 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+// Nós (Aline, Jonatan, Gabriel), garantimos que:
+//
+// - Não utilizamos código fonte obtidos de outros estudantes,
+// ou fonte não autorizada, seja modificado ou cópia literal.
+// - Todo código usado em nosso trabalho é resultado do nosso
+// trabalho original, ou foi derivado de um
+// código publicado nos livros texto desta disciplina.
+// - Temos total ciência das consequências em caso de violarmos estes termos.
 
 public class Estatisticas {
 	private InfoTime time;
@@ -21,6 +33,83 @@ public class Estatisticas {
 	public void exibeTime(){
 		System.out.println(ObtemLinhaExibicaoTimeFullTime(true));
 	}
+
+	public void exibeESalvaClassificacaoFullTime(Hash tabelaTimes){
+		ObjetoOrdenado[] listaTotalDePontosFullTime = new ObjetoOrdenado[20];
+		ObjetoOrdenado[] listaTotalDePontosHalfTime = new ObjetoOrdenado[20];
+		Times[] timesLiga = Times.values();
+		
+		for(Times timeAtual : timesLiga){
+			InfoTime time = tabelaTimes.busca(timeAtual.getNome());
+			
+			ObjetoOrdenado novo = new ObjetoOrdenado();
+			novo.setPropriedadeOrdenada(time.getPontuacaoFullTime());
+			novo.setTime(time);
+			
+			ObjetoOrdenado novoHalfTime = new ObjetoOrdenado();
+			novoHalfTime.setPropriedadeOrdenada(time.getPontuacaoHalfTime());
+			novoHalfTime.setTime(time);
+			
+			listaTotalDePontosFullTime[timeAtual.getIndice()] = novo;
+			listaTotalDePontosHalfTime[timeAtual.getIndice()] = novoHalfTime;
+		}
+		
+		HeapSort heapFullTime = new HeapSort(new MaxHeap());
+		heapFullTime.HeapSortOrdenacao(listaTotalDePontosFullTime);
+		ObjetoOrdenado[] maxHeapFullTime = heapFullTime.getHeap();
+		AjusteClassificacaoFullTime(maxHeapFullTime);
+		
+		HeapSort heapHalfTime = new HeapSort(new MaxHeap());
+		heapHalfTime.HeapSortOrdenacao(listaTotalDePontosHalfTime);
+		ObjetoOrdenado[] maxHeapHalfTime = heapHalfTime.getHeap();
+		AjusteClassificacaoHalfTime(maxHeapHalfTime);
+		
+		String conteudoMaxHeapFullTime = "";
+		String conteudoMaxHeapHalfTime = "";
+		
+		
+		String cabecalho = "                           - Home -                   - Away -                    - Total -      \n";
+		cabecalho       += "                      Pld   W  D  L   F:A           W  D  L   F:A              F:A     +/-    Pts\n";
+				
+		String separadorInicial = " ";
+		int indice = 1;
+		for(int i = maxHeapFullTime.length - 1; i >= 0 ; i--){
+			separadorInicial = indice > 9 ? "" : " ";
+			
+			setTime(maxHeapFullTime[i].getTime());
+			
+			String inicioLinha = separadorInicial + indice + ". ";
+			conteudoMaxHeapFullTime += inicioLinha + ObtemLinhaExibicaoTimeFullTime(false) + "\n";
+			
+			indice++;
+		}
+		indice = 1;
+		for(int i = maxHeapHalfTime.length - 1; i >= 0 ; i--){
+			separadorInicial = indice > 9 ? "" : " ";
+			setTime(maxHeapHalfTime[i].getTime());
+			
+			String inicioLinha = separadorInicial + indice + ". ";
+			conteudoMaxHeapHalfTime += inicioLinha + ObtemLinhaExibicaoTimeHalfTime(false) + "\n";
+			indice++;
+		}
+		System.out.println(cabecalho + conteudoMaxHeapFullTime);
+		Arquivo.SalvarArquivo("fixture.txt", cabecalho + conteudoMaxHeapFullTime);
+		Arquivo.SalvarArquivo("fixture_ht.txt", cabecalho + conteudoMaxHeapHalfTime);
+	}
+	
+	public void exibeESalvaMenorPerdedor(Hash tabelaTimes){	
+		ObjetoOrdenado[] listaTimesPorDerrotas = ObtemListaTimesPorTotalDerrotas(tabelaTimes);
+		
+		HeapSort heapDerrotas = new HeapSort(new MinHeap());
+		heapDerrotas.HeapSortOrdenacao(listaTimesPorDerrotas);
+		ObjetoOrdenado[] minHeapDerrotas = heapDerrotas.getHeap();
+		AjusteClassificacaoDerrotas(minHeapDerrotas);
+		
+		InfoTime time = minHeapDerrotas[19].getTime();
+		String conteudoArquivo = time.getNome() +", "+ minHeapDerrotas[19].getPropriedadeOrdenada();
+		System.out.println(conteudoArquivo);
+		Arquivo.SalvarArquivo("less_defeats.txt", conteudoArquivo);
+	}
 	
 	private String ObtemNomePadronizado(String nomeTime, boolean fgAdicionaEspacosInicio){
 		String separador = " ";
@@ -34,6 +123,22 @@ public class Estatisticas {
 		return nomeTime;
 	}
 
+	private void AjusteClassificacaoDerrotas(ObjetoOrdenado[] listaTimes){
+		int indice = listaTimes.length - 1;
+		while(indice > 0){
+			if(listaTimes[indice].getPropriedadeOrdenada() == listaTimes[indice - 1].getPropriedadeOrdenada()){
+				InfoTime timeAtual = listaTimes[indice].getTime();
+				InfoTime proximoTime = listaTimes[indice - 1].getTime();
+				if(timeAtual.getTotalDerrotaEmCasaFullTime() > proximoTime.getTotalDerrotaEmCasaFullTime()){
+					ObjetoOrdenado atual = listaTimes[indice];
+					listaTimes[indice] = listaTimes[indice - 1];
+					listaTimes[indice - 1] = atual;
+				}
+			}
+			indice--;
+		}
+	}
+	
 	private String ObtemLinhaExibicaoTimeFullTime(boolean fgAdicionaEspacosInicioNome){
 		String separadorVitoriasEmCasa = time.getTotalVitoriasEmCasaFullTime() > 9 ? "   " : "    ";
 		String separadorPosVitoriasEmCasa = time.getTotalVitoriasEmCasaFullTime() > 9 ? "  " : "  ";
@@ -98,67 +203,21 @@ public class Estatisticas {
 		return retorno;
 	}
 	
-	public void exibeESalvaClassificacaoFullTime(Hash tabelaTimes){
-		ObjetoOrdenado[] listaTotalDePontosFullTime = new ObjetoOrdenado[20];
-		ObjetoOrdenado[] listaTotalDePontosHalfTime = new ObjetoOrdenado[20];
+	private ObjetoOrdenado[] ObtemListaTimesPorTotalDerrotas(Hash tabelaTimes){
+		ObjetoOrdenado[] listaTotalDerrotas = new ObjetoOrdenado[20];
 		Times[] timesLiga = Times.values();
 		
 		for(Times timeAtual : timesLiga){
 			InfoTime time = tabelaTimes.busca(timeAtual.getNome());
 			
 			ObjetoOrdenado novo = new ObjetoOrdenado();
-			novo.setPropriedadeOrdenada(time.getPontuacaoFullTime());
+			int totalDerrotas = time.getTotalDerrotaEmCasaFullTime() + time.getTotalDerrotaForaDeCasaFullTime();
+			novo.setPropriedadeOrdenada(totalDerrotas);
 			novo.setTime(time);
-			
-			ObjetoOrdenado novoHalfTime = new ObjetoOrdenado();
-			novoHalfTime.setPropriedadeOrdenada(time.getPontuacaoHalfTime());
-			novoHalfTime.setTime(time);
-			
-			listaTotalDePontosFullTime[timeAtual.getIndice()] = novo;
-			listaTotalDePontosHalfTime[timeAtual.getIndice()] = novoHalfTime;
+									
+			listaTotalDerrotas[timeAtual.getIndice()] = novo;
 		}
-		
-		HeapSort heapFullTime = new HeapSort(new MaxHeap());
-		heapFullTime.HeapSortOrdenacao(listaTotalDePontosFullTime);
-		ObjetoOrdenado[] maxHeapFullTime = heapFullTime.getHeap();
-		AjusteClassificacaoFullTime(maxHeapFullTime);
-		
-		HeapSort heapHalfTime = new HeapSort(new MaxHeap());
-		heapHalfTime.HeapSortOrdenacao(listaTotalDePontosHalfTime);
-		ObjetoOrdenado[] maxHeapHalfTime = heapHalfTime.getHeap();
-		AjusteClassificacaoHalfTime(maxHeapHalfTime);
-		
-		String conteudoMaxHeapFullTime = "";
-		String conteudoMaxHeapHalfTime = "";
-		
-		
-		String cabecalho = "                           - Home -                   - Away -                    - Total -      \n";
-		cabecalho       += "                      Pld   W  D  L   F:A           W  D  L   F:A              F:A     +/-    Pts\n";
-				
-		String separadorInicial = " ";
-		int indice = 1;
-		for(int i = maxHeapFullTime.length - 1; i >= 0 ; i--){
-			separadorInicial = indice > 9 ? "" : " ";
-			
-			setTime(maxHeapFullTime[i].getTime());
-			
-			String inicioLinha = separadorInicial + indice + ". ";
-			conteudoMaxHeapFullTime += inicioLinha + ObtemLinhaExibicaoTimeFullTime(false) + "\n";
-			
-			indice++;
-		}
-		indice = 1;
-		for(int i = maxHeapHalfTime.length - 1; i >= 0 ; i--){
-			separadorInicial = indice > 9 ? "" : " ";
-			setTime(maxHeapHalfTime[i].getTime());
-			
-			String inicioLinha = separadorInicial + indice + ". ";
-			conteudoMaxHeapHalfTime += inicioLinha + ObtemLinhaExibicaoTimeHalfTime(false) + "\n";
-			indice++;
-		}
-		System.out.println(cabecalho + conteudoMaxHeapFullTime);
-		Arquivo.SalvarArquivo("fixture.txt", cabecalho + conteudoMaxHeapFullTime);
-		Arquivo.SalvarArquivo("fixture_ht.txt", cabecalho + conteudoMaxHeapHalfTime);
+		return listaTotalDerrotas;
 	}
 	
 	private void AjusteClassificacaoFullTime(ObjetoOrdenado[] classificacao){
