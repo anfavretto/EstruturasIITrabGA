@@ -250,4 +250,27 @@ public class Estatisticas {
 			indice--;
 		}
 	}
+	
+	public ObjetoOrdenado[] classificacaoChutesGol(Hash hash) {
+		ObjetoOrdenado[] array = new ObjetoOrdenado[20];
+		Times[] times = Times.values();
+		for(Times timeAtual : times){
+			InfoTime time = hash.busca(timeAtual.getNome());			
+			ObjetoOrdenado novo = new ObjetoOrdenado();
+			novo.setPropriedadeOrdenada((int)time.getAproveitamentoChutes());
+			novo.setTime(time);
+			array[timeAtual.getIndice()] = novo;
+		}
+		HeapSort heapChutesGol = new HeapSort(new MinHeap());
+		heapChutesGol.HeapSortOrdenacao(array);
+		ObjetoOrdenado[] classificacao = heapChutesGol.getHeap();
+		return classificacao;
+	}
+	
+	public void printlnClassificacaoChutesGol(ObjetoOrdenado[] array) {
+		for(int i = 0; i < array.length; i++) {
+			System.out.println(i + 1 + ". " + array[i].getTime().getNome() + ", "
+					+ array[i].getTime().getAproveitamentoChutes() + " chutes a gol para cada gol.");
+		}
+	}
 }

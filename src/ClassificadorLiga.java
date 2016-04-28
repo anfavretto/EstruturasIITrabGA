@@ -46,7 +46,11 @@ public class ClassificadorLiga {
 		
 		Estatisticas estatisticas = new Estatisticas();
 		
+<<<<<<< HEAD
+		System.out.println("Digite o que você deseja executar: \n 1- Pesquisar um time \n 2- Exibir classificação \n 3- Classificação chutes para gol \n 0- Sair");
+=======
 		System.out.println("Digite o que você deseja executar: \n 1- Pesquisar um time \n 2- Exibir e Salvar Classificação \n 3- Exibir e Salvar Time com menos derrotas  \n 0- Sair");
+>>>>>>> refs/remotes/anfavretto/master
 		BufferedReader leitura = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			int valorSelecionado = Integer.parseInt(leitura.readLine());
@@ -68,11 +72,18 @@ public class ClassificadorLiga {
 					estatisticas.exibeESalvaClassificacaoFullTime(tabelaHash);
 					break;
 				case(3):
+<<<<<<< HEAD
+					estatisticas.printlnClassificacaoChutesGol(estatisticas.classificacaoChutesGol(tabelaHash));
+					break;
+				}
+				System.out.println("Digite o que você deseja executar: \n 1- Pesquisar um time \n 2- Exibir classificação \n 3- Classificação chutes para gol \n 0- Sair");
+=======
 					estatisticas.exibeESalvaMenorPerdedor(tabelaHash);
 					break;
 				}
 				
 				System.out.println("Digite o que você deseja executar: \n 1- Pesquisar um time \n 2- Exibir classificação \n 3- Exibir e Salvar Time com menos derrotas  \n 0- Sair");
+>>>>>>> refs/remotes/anfavretto/master
 				valorSelecionado = Integer.parseInt(leitura.readLine());
 			}	
 		} catch (IOException e) {
@@ -127,6 +138,7 @@ public class ClassificadorLiga {
 		}
 		homeTeam.atualizaTotalDePartidasJogadas();
 		homeTeam.setTotalChutesGol(Integer.parseInt(dados[13]));
+		homeTeam.setAproveitamentoChutes();
 	}
 	
 	public static void AdicionaAtualizaAwayTeam(String[] dados, Hash tabelaHash){
@@ -168,5 +180,6 @@ public class ClassificadorLiga {
 		}
 		awayTeam.atualizaTotalDePartidasJogadas();
 		awayTeam.setTotalChutesGol(Integer.parseInt(dados[14]));
+		awayTeam.setAproveitamentoChutes();
 	}
 }
