@@ -118,14 +118,14 @@ public class Estatisticas {
 			listaTotalDePontosHalfTime[timeAtual.getIndice()] = novoHalfTime;
 		}
 		
-		HeapSort heapFullTime = new HeapSort();
+		HeapSort heapFullTime = new HeapSort(new MaxHeap());
 		heapFullTime.HeapSortOrdenacao(listaTotalDePontosFullTime);
-		ObjetoOrdenado[] maxHeapFullTime = heapFullTime.getMaxHeap();
+		ObjetoOrdenado[] maxHeapFullTime = heapFullTime.getHeap();
 		AjusteClassificacaoFullTime(maxHeapFullTime);
 		
-		HeapSort heapHalfTime = new HeapSort();
+		HeapSort heapHalfTime = new HeapSort(new MaxHeap());
 		heapHalfTime.HeapSortOrdenacao(listaTotalDePontosHalfTime);
-		ObjetoOrdenado[] maxHeapHalfTime = heapHalfTime.getMaxHeap();
+		ObjetoOrdenado[] maxHeapHalfTime = heapHalfTime.getHeap();
 		AjusteClassificacaoHalfTime(maxHeapHalfTime);
 		
 		String conteudoMaxHeapFullTime = "";
