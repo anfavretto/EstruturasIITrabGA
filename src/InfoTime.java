@@ -38,6 +38,8 @@ public class InfoTime
 	
 	private int totalDePontosHalfTime;
 	private int totalDePontosFullTime;
+	private int totalChutesGol;
+	private int aproveitamentoChutes;
 	
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -274,5 +276,21 @@ public class InfoTime
 	public int getSaldoHalfTime() {
 		int saldo = getTotalGolsMarcadosHalfTime() - getTotalGolsSofridosHalfTime();
 		return saldo;
+	}
+	
+	public void setTotalChutesGol(int chutes) {
+		totalChutesGol = totalChutesGol + chutes;
+	}
+	
+	public int getTotalChutesGol() {
+		return totalChutesGol;
+	}
+	
+	public void setAproveitamentoChutes() {
+		aproveitamentoChutes = (totalChutesGol / getTotalGolsMarcadosFullTime()) + 1;
+	}
+	
+	public int getAproveitamentoChutes() {
+		return aproveitamentoChutes;
 	}
 }
