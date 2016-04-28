@@ -9,8 +9,17 @@
 
 public class InfoTime 
 {
-	public String nome;
-	public int totalPartidasJogadas;
+	private String nome;
+	private int totalPartidasJogadas;
+	private int gols;
+	
+	public void setGols() {
+		this.gols = getTotalGolsMarcadosFullTime();
+	}
+	
+	public int getGols() {
+		return gols;
+	}
 	
 	// Em Casa
 	private int totalVitoriasEmCasaFullTime;
@@ -39,7 +48,7 @@ public class InfoTime
 	private int totalDePontosHalfTime;
 	private int totalDePontosFullTime;
 	private int totalChutesGol;
-	private int aproveitamentoChutes;
+	private double aproveitamentoChutes;
 	
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -287,10 +296,13 @@ public class InfoTime
 	}
 	
 	public void setAproveitamentoChutes() {
-		aproveitamentoChutes = (totalChutesGol / getTotalGolsMarcadosFullTime()) + 1;
+		setGols();
+		if (gols != 0) {
+			aproveitamentoChutes = (double)totalChutesGol / (double)gols;
+		}
 	}
 	
-	public int getAproveitamentoChutes() {
+	public double getAproveitamentoChutes() {
 		return aproveitamentoChutes;
 	}
 }
