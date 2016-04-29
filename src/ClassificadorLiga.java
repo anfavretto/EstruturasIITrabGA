@@ -68,6 +68,7 @@ public class ClassificadorLiga {
 					estatisticas.exibeESalvaClassificacaoFullTime(tabelaHash);
 					break;
 				case(3):
+          estatisticas.exibeSalvaTimeArtilheiro (tabelaHash);
 					break;
 				case(4):
 					estatisticas.exibeESalvaMenorPerdedor(tabelaHash);
