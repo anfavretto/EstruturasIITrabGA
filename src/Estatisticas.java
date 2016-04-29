@@ -292,4 +292,52 @@ public class Estatisticas {
 		return classificacao;
 	}
 	
+	public void printlnClassificacaoChutesGol(ObjetoOrdenado[] array) {
+		for(int i = 0; i < array.length; i++) {
+			System.out.println(i + 1 + ". " + array[i].getTime().getNome() + ", "
+					+ array[i].getTime().getAproveitamentoChutes() + " chutes a gol para cada gol.");
+		}
+	}
+
+    public void exibeSalvaTimeArtilheiro (Hash tabelaTimes)
+    {
+        ObjetoOrdenado[] listaTimesMarcadores = ObtemListaTimesMarcadores (tabelaTimes);
+        HeapSort hMarcador = new HeapSort(new MaxHeap());
+        hMarcador.HeapSortOrdenacao(listaTimesMarcadores);
+        ObjetoOrdenado[] marcadores = hMarcador.getHeap();
+
+        InfoTime time = marcadores[19].getTime();
+        String conteudoArquivo = time.getNome() +", " + 
+                                 (int)marcadores[19].getPropriedadeOrdenada();
+        System.out.println(conteudoArquivo);
+        Arquivo.SalvarArquivo("top_scorer.txt", conteudoArquivo);
+    }
+    private ObjetoOrdenado[] ObtemListaTimesMarcadores (Hash tabelaTimes)
+    {
+        ObjetoOrdenado[] lista = new ObjetoOrdenado [20];
+        Times[] timesLiga = Times.values ();
+        for (Times timeAtual : timesLiga)
+        {
+            InfoTime time = tabelaTimes.busca (timeAtual.getNome ());
+            ObjetoOrdenado novo = new ObjetoOrdenado ();
+            int gols = time.getTotalGolsMarcadosEmCasaFullTime () + 
+                       time.getTotalGolsMarcadosForaDeCasaFullTime ();
+            novo.setPropriedadeOrdenada (gols);
+            novo.setTime(time);
+            lista [timeAtual.getIndice ()] = novo;
+        }
+        return lista;
+    }
+
+    private void printMarcadores (ObjetoOrdenado[] om)
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            InfoTime t = om[i].getTime ();
+            System.out.println ("Time: " + t.getNome () +
+                                " Gols marcados: " + (t.getTotalGolsMarcadosForaDeCasaFullTime() + 
+                                                      t.getTotalGolsMarcadosEmCasaFullTime())
+                               );
+        }
+    }
 }
