@@ -1,0 +1,20 @@
+1. Man City, 2,33333 chutes a gol para cada gol. 
+2. Liverpool, 2,56436 chutes a gol para cada gol. 
+3. Man United, 2,82813 chutes a gol para cada gol. 
+4. West Ham, 2,97500 chutes a gol para cada gol. 
+5. Swansea, 3,01852 chutes a gol para cada gol. 
+6. Arsenal, 3,08824 chutes a gol para cada gol. 
+7. Stoke, 3,08889 chutes a gol para cada gol. 
+8. Everton, 3,19672 chutes a gol para cada gol. 
+9. Chelsea, 3,21127 chutes a gol para cada gol. 
+10. Southampton, 3,27778 chutes a gol para cada gol. 
+11. Sunderland, 3,34146 chutes a gol para cada gol. 
+12. West Brom, 3,37209 chutes a gol para cada gol. 
+13. Hull, 3,39474 chutes a gol para cada gol. 
+14. Aston Villa, 3,43590 chutes a gol para cada gol. 
+15. Tottenham, 3,43636 chutes a gol para cada gol. 
+16. Fulham, 3,72500 chutes a gol para cada gol. 
+17. Cardiff, 3,93750 chutes a gol para cada gol. 
+18. Newcastle, 4,27907 chutes a gol para cada gol. 
+19. Crystal Palace, 4,33333 chutes a gol para cada gol. 
+20. Norwich, 5,21429 chutes a gol para cada gol. 

@@ -1,1 +1,3 @@
 Man City, 6
+Chelsea, 6
+Liverpool, 6

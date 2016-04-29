@@ -8,15 +8,16 @@
 // - Temos total ciência das consequências em caso de violarmos estes termos.
 
 public class ObjetoOrdenado {
-	private int PropriedadeOrdenada;
+	private double PropriedadeOrdenada;
 	private InfoTime Time;
 	
-	public int getPropriedadeOrdenada() {
+	public double getPropriedadeOrdenada() {
 		return PropriedadeOrdenada;
 	}
-	public void setPropriedadeOrdenada(int propriedadeOrdenada) {
+	public void setPropriedadeOrdenada(double propriedadeOrdenada) {
 		PropriedadeOrdenada = propriedadeOrdenada;
 	}
+	
 	public InfoTime getTime() {
 		return Time;
 	}

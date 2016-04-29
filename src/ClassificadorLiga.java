@@ -73,7 +73,7 @@ public class ClassificadorLiga {
 					estatisticas.exibeESalvaMenorPerdedor(tabelaHash);
 					break;
 				case(5):
-					estatisticas.printlnClassificacaoChutesGol(estatisticas.classificacaoChutesGol(tabelaHash));
+					estatisticas.exibeESalvaChutesGol(tabelaHash);
 					break;
 				}
 				

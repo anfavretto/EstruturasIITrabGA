@@ -56,7 +56,7 @@ public class MinHeap implements Heap
                           arranjo.length); 
 
         this._qtElementos = this._arranjo.length;
-        int limite = ((this._arranjo.length - this._xfactor) / 2);
+        int limite = (this._arranjo.length / 2 ) - this._xfactor;
         for (int i = limite;i >= 0; i--)
         {
             this.heapfy(i);
